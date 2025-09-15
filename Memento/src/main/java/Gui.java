@@ -1,9 +1,11 @@
 
 
 import javafx.application.Application;
+import javafx.collections.transformation.SortedList;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -18,6 +20,8 @@ public class Gui extends Application {
     private ColorBox colorBox2;
     private ColorBox colorBox3;
     private CheckBox checkBox;
+
+
 
     public void start(Stage stage) {
 
@@ -73,6 +77,32 @@ public class Gui extends Application {
         stage.setScene(scene);
         stage.setTitle("Memento Pattern Example");
         stage.show();
+
+
+
+        SortedList<String> reversed = new SortedList<>(
+                controller.getTimeStamps(),
+                (a, b) -> b.compareTo(a)
+        );
+        ListView listView = new ListView(reversed);
+        Scene historyScene = new Scene(listView);
+        Stage historyStage = new Stage();
+        historyStage.setScene(historyScene);
+        historyStage.setTitle("History");
+        historyStage.setX(stage.getX()+400);
+        historyStage.show();
+
+
+        listView.setOnMouseClicked(event -> {
+            String selected = (String) listView.getSelectionModel().getSelectedItem();
+            if(selected !=null) {
+                controller.moveToTimeStamp(selected);
+            }
+        });
+
+
+
+
     }
 
     public void updateGui() {
@@ -81,5 +111,7 @@ public class Gui extends Application {
         colorBox2.setColor(controller.getOption(2));
         colorBox3.setColor(controller.getOption(3));
         checkBox.setSelected(controller.getIsSelected());
+
+
     }
 }

@@ -1,5 +1,8 @@
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,12 +11,14 @@ public class Controller {
     private Gui gui;
     private List<IMemento> history; // Memento history
     private List<IMemento> forwardHistory;
+    private ObservableList<String> timeStampHistory;
 
     public Controller(Gui gui) {
         this.model = new Model();
         this.gui = gui;
         this.history = new ArrayList<>();
         this.forwardHistory = new ArrayList<>();
+        this.timeStampHistory = FXCollections.observableArrayList();
     }
 
     public void setOption(int optionNumber, int choice) {
@@ -58,9 +63,28 @@ public class Controller {
     private void saveToHistory() {
         IMemento currentState = model.createMemento();
         history.add(currentState);
+        timeStampHistory.add(currentState.getTimeStamp());
     }
     private void saveToForwardHistory(){
         IMemento currentState = model.createMemento();
         forwardHistory.add(currentState);
+    }
+
+    public ObservableList<String> getTimeStamps(){
+        return timeStampHistory;
+
+    }
+    public void moveToTimeStamp(String ts){
+        System.out.println("Moving to timestamp" + ts);
+        for(int i = 0; i<history.size(); i++){
+            if (history.get(i).getTimeStamp().equals(ts)){
+
+                model.restoreState(history.get(i));
+
+//                history.subList(i,history.size()).clear();
+//                timeStampHistory.subList(i, timeStampHistory.size()).clear();
+                gui.updateGui();
+            }
+        }
     }
 }
