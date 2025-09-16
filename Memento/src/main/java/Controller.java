@@ -45,6 +45,7 @@ public class Controller {
         if (!history.isEmpty()) {
             System.out.println("Memento found in history");
             IMemento previousState = history.remove(history.size() - 1);
+            timeStampHistory.remove(timeStampHistory.size()-1);
             saveToForwardHistory(); //adding to forward list
             model.restoreState(previousState);
             gui.updateGui();
