@@ -16,6 +16,7 @@
         <option value="$PROJECT_DIR$/Chain_of_Resposibility/pom.xml" />
         <option value="$PROJECT_DIR$/Memento/pom.xml" />
         <option value="$PROJECT_DIR$/Proxy/pom.xml" />
+        <option value="$PROJECT_DIR$/Visitor/pom.xml" />
       </list>
     </option>
   </component>

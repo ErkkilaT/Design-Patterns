@@ -6,18 +6,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Template_Method" />
+        <module name="Composite" />
+        <module name="Visitor" />
+        <module name="Abstract_Factory" />
+        <module name="Factory_Method" />
         <module name="Decorator" />
         <module name="Memento" />
-        <module name="Template_Method" />
         <module name="Proxy" />
-        <module name="Composite" />
-        <module name="Abstract_Factory" />
         <module name="Singleton" />
         <module name="State" />
         <module name="Observer" />
         <module name="Chain_of_Resposibility" />
         <module name="Strategy" />
-        <module name="Factory_Method" />
       </profile>
     </annotationProcessing>
   </component>
