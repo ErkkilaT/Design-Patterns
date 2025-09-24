@@ -11,6 +11,7 @@
         <module name="Visitor" />
         <module name="Abstract_Factory" />
         <module name="Builder" />
+        <module name="Adapter" />
         <module name="Factory_Method" />
         <module name="Decorator" />
         <module name="Memento" />
