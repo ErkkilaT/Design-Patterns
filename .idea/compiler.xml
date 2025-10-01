@@ -23,6 +23,7 @@
         <module name="Observer" />
         <module name="Chain_of_Resposibility" />
         <module name="Strategy" />
+        <module name="Mediator" />
         <module name="Bridge" />
       </profile>
     </annotationProcessing>
